@@ -1,0 +1,202 @@
+//Global variable list.
+
+$(document).ready(function(){
+	$("img[id^='rand']").on("click", function(){
+		if(event.target.id == "rand1"){
+			if((window.localStorage.getItem("BTF1") === null) && (window.localStorage.getItem("BTF2") === null)){
+				$("#test").css("display", "none");
+				$("#moods").css("display", "block");
+				moodSelect();
+			}
+			else{
+				alert("Error loading moodSelect();");
+			}
+		}
+	});
+	init();
+});
+
+//Function:	init
+//	Initialize the application.
+function init(){
+	//if(isLoggedIn()){
+		setLanding();
+	/*}
+	else{
+		hideSec("landing");
+		showSec("login");
+	}*/
+}
+
+//Function:	isLoggedIn
+//	Determine if the user is logged in or not.
+function isLoggedIn(){
+	if(window.localStorage.getItem("BTF") == "true"){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+//Function: setLanding
+//	Load the landing screen and navigation.
+function setLanding(){
+	var click = 0;
+	$("#exerciseSetup").on("click", function(){
+		if((window.localStorage.getItem("BTF1") === null) && (window.localStorage.getItem("BTF2") === null) && (click < 1)){
+			click++;
+			$("#moods").css("display", "block");
+			moodSelect();
+		}
+	});
+}
+
+//Function moodSelect
+//	Setup required functionality to get user's mood.
+function moodSelect(){
+	if((window.localStorage.getItem("BTF1") === null)){
+		for(var i = 0; i < 5; i++){
+			var x = i + 1;
+			var y = $("#moods").width()/5;
+			$("#moodTable").append("<td " + 
+				"id='td" + i + "' style='text-align:center;'>" + 
+				"<img src='img/" + x + ".PNG'" + 
+				"id='img" + x + "' style='height:" + y + "px; " + 
+				"width:" + y + "px;'>" + 
+				"</td>");
+		}
+		$("img[id^='img']").on("click", function(){
+			//var mood = getMood
+			alert(event.target.id);
+			/*
+			var date = new Date();
+			var time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+			var temp = [mood, time];
+			$("#moods").css("display", "none");
+			if(window.localStorage.getItem("BTF1") === null){
+				window.localStorage.setItem("BTF1", JSON.stringify(temp));
+				//$("#durWorkout").css("display", "block");
+				exerciseStart();
+			}
+			else{
+				window.localStorage.setItem("BTF2", JSON.stringify(temp));
+				//alert(JSON.parse(window.localStorage.getItem("BTF1")));
+				$.ajax({
+					type: "POST",
+					async: "true",
+					url: "php/storeJSON.php",
+					data: {
+						set1: window.localStorage.getItem("BTF1"),
+						set2: window.localStorage.getItem("BTF2")
+					},
+					success: function(){
+						alert("data committed to JSON");
+					},
+					error: function(e){
+						alert("error");
+					}
+				});
+				window.localStorage.removeItem("BTF1");
+				window.localStorage.removeItem("BTF2");
+				$("td[id^='td']").replaceWith("");
+				setLanding();
+			}
+			*/
+		});
+	}
+}
+
+//Function exerciseTime
+//	Multi-purpose; sets up the required functionality to ensure 
+//		miss-clicking isn't an issue, and acts as a stopwatch.
+function exerciseStart(){
+	$("#wDone").submit(function(e){
+		e.preventDefault();
+		var temp = $("#response").val();
+		if(["Y", "YES"].indexOf(temp.toUpperCase()) > -1){
+			$("#durWorkout").css("display", "none");
+			$("#moods").css("display", "block");
+			moodSelect();
+		}
+		return false;
+	});
+}
+
+//Function: getMood
+//	Determine the user's mood, based on the icon clicked.
+function getMood(iNum){
+	var num = parseInt(iNum.replace('img', ''));
+	return (num + 1);
+}
+
+//Function:	hideSec
+//	Hide the relevant section from view, setting "display" to "none".
+function hideSec(sec){
+	$("#" + sec).css("display", "none");
+}
+
+//Function:	showSec
+//	Show the relevant section, setting "display" to "block".
+function showSec(sec){
+	$("#" + sec).css("display", "block");
+	if(sec === "login"){
+		$("#lSignup").on("click", function(){
+			hideSec("login");
+			showSec("signup");
+		});
+		$("#fLogin").submit(function(e){
+			e.preventDefault();
+			if(isValidForm("login") === true){
+				alert("login successful");
+				window.localStorage.setItem("BTF", "true");
+				hideSec("login");
+				showSec("landing");
+			}
+			else{
+				alert("login error");
+			}
+			return false;
+		});
+	}
+	else if(sec === "signup"){
+		$("#sLogin").on("click", function(){
+			hideSec("signup");
+			showSec("login");
+		});
+		$("#fSignup").submit(function(e){
+			e.preventDefault();
+			if(isValidForm("signup") === true){
+				alert("Signup Successful");
+				hideSec("signup");
+				showSec("login");
+			}
+			else{
+				alert("signup error");
+			}
+			return false;
+		});
+	}
+}
+
+//Function: isValidForm
+//	Evaluate form validity, taking into account the section currently
+//		being displayed.
+function isValidForm(sec){
+	if(sec === "login"){
+		var user = $("#lName").val();
+		var pass = $("#lPassword").val();
+		if((user.trim() === "" || user.trim().length < 3) || (pass.trim() === "" || pass.trim().length < 3)){
+			return false;
+		}
+	}
+	else if(sec === "signup"){
+		var user = $("#sName").val();
+		var pass = $("#sPassword").val();
+		var emai = $("#sEmail").val();
+		if((user.trim() === "" || user.trim().length < 3) || (pass.trim() === "" || pass.trim().length < 3) || (emai.indexOf("@") == -1 || emai.indexOf(".") == -1)){
+			return false;
+		}
+	}
+	return true;
+}

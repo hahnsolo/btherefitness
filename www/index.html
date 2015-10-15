@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BeThereFitness</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+    <!-- CSS src files -->
+    <link rel="stylesheet" href="css/jquery-ui.css" type="text/css">
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/main.css" type="text/css">
+
+    <!-- Javascript src files -->
+    <script charset="UTF-8" src="js/jquery.min.js" type="text/javascript"></script>
+    <script charset="UTF-8" src="js/jquery-ui.min.js" type="text/javascript"></script>
+    <script charset="UTF-8" src="js/main.js" type="text/javascript"></script>
+    
+      <script type="text/javascript" charset="utf-8">
+
+  
+    function onDeviceReady() {
+        check();
+    }
+
+    </script>
+    
+</head>
+
+<body role="document" onload="onDeviceReady()">
+    <!-- Header section -->
+    <div class="page-header">
+        <div class="container">
+            <center> <img src="img/gif/SSU_Header.gif" class="img-rounded" width="55%" height="55%" />
+        </div>
+    </div>
+
+    <div class="container" style="margin-left:10px; margin-right:10px;border-bottom: thick solid #0099FF;">
+        <h1 id="pwt" style="display:none; font-family: 'Fjalla One', sans-serif;">Pre-Workout Mood</h1>
+        
+        <div id="preButtons" class="row" style="display:none;">
+            <div class="col-xs-3"><img src="img/1.PNG" class="img-circle" id="pw1" onclick="preCalc(this,1);"/>
+            </div>
+            <div class="col-xs-3"><img src="img/2.PNG" class="img-circle" id="pw2" onclick="preCalc(this,2);" />
+            </div>
+            <div class="col-xs-3"><img src="img/3.PNG" class="img-circle" id="pw3" onclick="preCalc(this,3);" />
+            </div>
+            <div class="col-xs-3"><img src="img/4.PNG" class="img-circle" id="pw4" onclick="preCalc(this,4);" />
+            </div>
+        </div>
+		
+        <br />
+    </div>
+
+	<div id="grayOut" class="gray-out">
+		<div id="postHolder" class="container" style="margin-left:10px; margin-right:10px;border-bottom: thick solid #0099FF;">
+			<h1 id="awt" style="font-family: 'Fjalla One', sans-serif; display:none;">Post-Workout Mood</h1>
+			<div id="postButtons" class="row" style="display:none;">
+				<div class="col-xs-3"><img src="img/1.PNG" class="img-circle" id="aw1" onclick="postCalc(this,1);" />
+				</div>
+				<div class="col-xs-3"><img src="img/2.PNG" class="img-circle" id="aw2" onclick="postCalc(this,2);" />
+				</div>
+				<div class="col-xs-3"><img src="img/3.PNG" class="img-circle" id="aw3" onclick="postCalc(this,3);" />
+				</div>
+				<div class="col-xs-3"><img src="img/4.PNG" class="img-circle" id="aw4" onclick="postCalc(this,4);" />
+				</div>
+			</div>
+			<br />
+		</div>
+	</div>
+	<div>
+
+    <button id="subButton" type="button" class="btn-primary act-button" onclick="submitMoods();">Enter Workout Mood</button>
+
+</body>
+    
+
+</html>

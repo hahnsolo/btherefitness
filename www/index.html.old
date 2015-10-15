@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>BeThereFitness</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		
+		<!-- JQuery CSS files -->
+		<link rel="stylesheet" href="css/jquery-ui.css" type="text/css">
+		<!-- Bootstrap CDN -->
+		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css">
+		<!-- Main CSS Files -->
+		<link rel="stylesheet" href="css/main.css" type="text/css">
+
+		<!-- Javascript src files -->
+		<script charset="UTF-8" src="js/jquery.min.js" type="text/javascript"></script>
+		<script charset="UTF-8" src="js/jquery-ui.min.js" type="text/javascript"></script>
+		<script charset="UTF-8" src="js/main.js" type="text/javascript"></script>
+	</head>
+	<body style="margin:0px; background-color:#0099FF;">
+		<!-- Header section -->
+		<header class="text-center" style="margin-top:10px; margin-bottom:5px;">
+			<img src="img/gif/SSU_Header.gif" class="img-rounded" style="height:75px; width:240px;" /><!-- 225px -->
+		</header>
+		
+		<!-- Test section -->
+		<section id="test" class="container-fluid" style="display:block; background-color:white; width:240px; border-radius:5px;">
+			<div class="row" style="">
+				<div class="col-xs-6">
+					<img src="img/rand1.png" id="rand1" class="img-thumbnail lImg-format" style=""/>
+				</div>
+				<div class="col-xs-6">
+					<img src="img/rand2.png" id="rand2" class="img-thumbnail rImg-format" style=""/>
+				</div>
+			</div>
+			<div class="row row-height" style="">
+				<div class="col-xs-6">
+					<img src="img/rand3.png" id="rand3" class="img-thumbnail lImg-format" style=""/>
+				</div>
+				<div class="col-xs-6">
+					<img src="img/rand4.png" id="rand4" class="img-thumbnail rImg-format" style=""/>
+				</div>
+			</div>
+		</section>
+		
+		<section id="moods" style="display:none; width:100%; margin:auto;">
+			<h3 style="text-align:center;">How are you feeling?</h3>
+			<table id="moodTable" style="width:100%;"></table>
+		</section>
+		
+		<!--	CURRENTLY DEFUNCT -->
+		<!-- Landing section -->
+		<!-- <section id="landing" style="display:none;"> -->
+			<!-- Navigation div -->
+			<!-- <div style="width:100%; border-bottom:solid; padding-bottom:10px;">
+				<div id="exerciseSetup" style="background:lightblue; border-radius:25px; width:50%; text-align:center; margin:auto; padding:10px;">
+					<h1 id="cWorkout" style="">Create Workout</h1>
+				</div>
+			</div> -->
+			
+			<!-- Mood selection div-->
+			<!-- <div id="moods" style="display:none;">
+				<h3 style="text-align:center;">How are you feeling?</h3>
+				<table id="moodTable" style="width:100%;"></table>
+			</div> ->>
+			
+			<!-- During workout div -->
+			<!-- <div id="durWorkout" style="text-align:center; display:none;">
+				<h4>Have you completed your workout?</h4>
+				<form name="Done" id="wDone" autocomplete="on">
+					<input type="text" placeholder="Yes/No" name="Response" id="response">
+					<input type="submit" id="resSubmit" value="Submit" />
+				</form>
+			</div>
+		</section> -->
+		
+		<!-- Login section -->
+		<section id="login" style="display:none;">
+			<form name="Login" id="fLogin" autocomplete="on">
+				<table>
+					<tr>
+						<td><label>Username:</label></td>
+						<td>
+							<!-- Username -->
+							<input type="text" placeholder="Username" name="Name" id="lName">
+						</td>
+					</tr>
+					<tr>
+						<td><label>Password:</label></td>
+						<td>
+							<!-- Password -->
+							<input type="password" placeholder="Password" name="Password" id="lPassword">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<!-- Login button -->
+							<input type="submit" id="lLogin" value="Login">
+						</td>
+						<td>
+							<!-- Signup redirect -->
+							<span id="lSignup" style="float:right; color:#0645AD;">Signup</span>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</section>
+		
+		<!-- Signup section -->
+		<section id="signup" style="display:none;">
+			<form name="Signup" id="fSignup" autocomplete="on">
+				<table>
+					<tr>
+						<td><label>Email:</label></td>
+						<td>
+							<!-- Email -->
+							<input type="email" placeholder="Email" name="Email" id="sEmail">
+						</td>
+					</tr>
+					<tr>
+						<td><label>Username:</label></td>
+						<td>
+							<!-- Username -->
+							<input type="text" placeholder="Username" name="Name" id="sName">
+						</td>
+					</tr>
+					<tr>
+						<td><label>Password:</label></td>
+						<td>
+							<!-- Password -->
+							<input type="password" placeholder="Password" name="Password" id="sPassword"><br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<!-- Submit button -->
+							<input type="submit" id="sSignup" value="Sign Up" />
+						</td>
+						<td>
+							<!-- Login redirect -->
+							<span id="sLogin" style="float:right; color:#0645AD;">Login</span>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</section>
+		
+		<!-- Footer section -->
+		<footer style="margin: 0 auto; margin-top:5px; bottom:10px; display:block; background-color:white; width:240px; border-radius:5px;">
+			<label>This is a footer with no meaningful text... sad keks...</label>
+		</footer>
+	</body>
+</html>
